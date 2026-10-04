@@ -13,15 +13,15 @@ Der ausführliche Plan mit Recherche und Begründungen liegt im Planungsdokument
 
 **Abnahme:** App erscheint in der Navigation und zeigt eine Vue-3-Seite. Geprüft auf Nextcloud 34.0.4.
 
-## Phase 1 – Datenkern (TypeScript)
+## Phase 1 – Datenkern (TypeScript) ✅
 
-- [ ] Typen und Validierung für Dateiformat v1
-- [ ] Baumoperationen: einfügen, verschieben, ein-/ausrücken, hoch/runter, löschen
-- [ ] Rückgängig/Wiederholen
-- [ ] PSP-Codes (auch eingefroren), Summen (Aufwand, Kosten, Zeitraum), Validierung (Zyklen, verwaiste Knoten, Abhängigkeiten)
-- [ ] Vitest-Tests, Abdeckung ≥ 90 %
+- [x] Typen und Validierung für Dateiformat v1 ([docs/DATEIFORMAT.md](docs/DATEIFORMAT.md))
+- [x] Baumoperationen: einfügen, verschieben, ein-/ausrücken, hoch/runter, löschen
+- [x] Rückgängig/Wiederholen
+- [x] PSP-Codes (auch eingefroren), Summen (Aufwand, Kosten, Zeitraum), Validierung (Zyklen, verwaiste Knoten, Abhängigkeiten)
+- [x] Vitest-Tests, Abdeckung ≥ 90 % (erreicht: 98,8 % Zeilen, 98,3 % Zweige)
 
-**Abnahme:** Beispiel-PSP lässt sich laden, ändern und verlustfrei speichern.
+**Abnahme:** Beispiel-PSP lässt sich laden, ändern und verlustfrei speichern. Erfüllt: [docs/beispiel.psp](docs/beispiel.psp) wird geladen, bearbeitet und byte-genau wieder geschrieben (Test in `src/core/__tests__/serialize.test.ts`).
 
 ## Phase 2 – Files-Integration
 
