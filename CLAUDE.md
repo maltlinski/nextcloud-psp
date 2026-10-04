@@ -26,6 +26,14 @@ npm run lint && npm run stylelint && npm run typecheck
 composer install && composer run test:unit && composer run psalm
 ```
 
-Packagist ist in manchen Sandbox-Umgebungen gesperrt; dann laufen PHPUnit und Psalm nur in der CI.
+Packagist ist in manchen Sandbox-Umgebungen gesperrt. Dann PHPUnit 10.5 und seine Abhängigkeiten per `git clone` holen und mit
+einer Classmap (`composer dump-autoload`) laden; Psalm gibt es als fertiges Phar im Repository `psalm/phar`.
 Für einen echten Test eine Nextcloud aus `nextcloud/server` (Branch `stable34`, Submodul `3rdparty`) mit SQLite installieren,
-die App nach `apps/psp` verlinken und `php occ app:enable psp` ausführen.
+die App nach `apps/psp` verlinken und `php occ app:enable psp` ausführen. Danach `tests/integration/api-test.sh`
+und `tests/e2e/editor-flow.mjs` laufen lassen.
+
+## Architektur in einem Satz je Teil
+
+- Speichern läuft über `FileController` → `PlanFileService` (ETag-Vergleich, `force` zum Überschreiben), nicht über WebDAV-`If-Match`.
+- `src/services/session.ts` hält Dokument, Verlauf und Speicherzustand (`saved`, `dirty`, `saving`, `conflict`, `error`, `readonly`).
+- `src/files.ts` wird über `LoadAdditionalScriptsEvent` in Files geladen; Dateien werden an der Endung `.psp` erkannt.

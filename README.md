@@ -2,7 +2,7 @@
 
 Projektstrukturpläne (PSP, engl. *work breakdown structure*) gemeinsam in Nextcloud erstellen, als Baum bearbeiten und für Anträge exportieren.
 
-> **Status:** im Aufbau. Phase 0 (Grundgerüst) und Phase 1 (Datenkern) sind umgesetzt. Den Fahrplan zeigt [ROADMAP.md](ROADMAP.md).
+> **Status:** im Aufbau. Phasen 0–2 sind umgesetzt: Pläne lassen sich in Files anlegen, im Editor als Gliederung bearbeiten und gemeinsam nutzen. Den Fahrplan zeigt [ROADMAP.md](ROADMAP.md).
 
 ## Idee
 
@@ -31,7 +31,14 @@ cd ../..
 sudo -u www-data php occ app:enable psp
 ```
 
-Danach erscheint „PSP“ in der App-Leiste.
+Danach erscheint „PSP“ in der App-Leiste, und in Files gibt es unter „Neu“ den Eintrag „Neuer Projektstrukturplan“.
+
+## Bedienung
+
+- **Anlegen:** in Files „Neu → Neuer Projektstrukturplan“ oder in der App „Neuer Projektstrukturplan“
+- **Öffnen:** auf eine `.psp`-Datei klicken
+- **Bearbeiten:** Enter legt einen neuen Punkt an, Tab rückt ein, Umschalt+Tab rückt aus, Alt+Pfeil verschiebt, Strg+Z macht rückgängig
+- **Speichern:** passiert automatisch. Hat jemand anderes inzwischen gespeichert, fragt die App, welche Fassung gelten soll.
 
 ## Entwicklung
 

@@ -1,6 +1,7 @@
 # Dateiformat `.psp` (Version 1)
 
-Ein Projektstrukturplan ist eine UTF-8-JSON-Datei mit der Endung `.psp`.
+Ein Projektstrukturplan ist eine UTF-8-JSON-Datei mit der Endung `.psp` und dem MIME-Typ `application/x-psp+json`.
+Eine leere `.psp`-Datei öffnet die App als neuen Plan, benannt nach der Datei.
 Ein vollständiges Beispiel liegt in [beispiel.psp](beispiel.psp).
 
 ## Aufbau

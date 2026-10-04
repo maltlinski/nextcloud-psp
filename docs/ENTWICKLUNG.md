@@ -57,6 +57,8 @@
 | `composer run test:unit` | PHPUnit |
 | `composer run psalm` | Statische Analyse |
 | `composer run cs:fix` | PHP-Code formatieren |
+| `tests/integration/api-test.sh <url> <occ>` | Datei-API gegen eine laufende Nextcloud prüfen |
+| `node tests/e2e/editor-flow.mjs` | Browsertest (vorher `npm i --no-save playwright`; Variablen siehe Dateikopf) |
 
 ## Aufbau
 
@@ -64,10 +66,16 @@
 appinfo/info.xml        App-Metadaten
 lib/                    PHP: App-Registrierung, Controller
 templates/index.php     Einstiegsseite der App
+lib/Service/            PlanFileService: Laden, Speichern mit ETag-Prüfung, Anlegen
+lib/Controller/         PageController (Seite), FileController (OCS-API)
 src/core/               Datenkern ohne UI (TypeScript, voll getestet)
-src/components/         Vue-Komponenten
-src/App.vue, main.ts    Vue-Einstieg
-tests/                  PHPUnit
+src/services/           API-Client und EditorSession (Autosave, Konflikte)
+src/views/, components/ Vue-Oberfläche
+src/files.ts            Einbindung in Files (Neu-Menü, Datei-Aktion)
+src/App.vue, main.ts    Vue-Einstieg der App
+tests/unit/             PHPUnit
+tests/integration/      API-Test mit curl
+tests/e2e/              Browsertest mit Playwright
 docs/                   Dokumentation
 ```
 

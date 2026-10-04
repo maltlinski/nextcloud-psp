@@ -17,4 +17,4 @@ oder auf github.com je Datei „Add file → Create new file“ mit dem Pfad `.g
 | --- | --- |
 | `node.yml` | ESLint, Stylelint, Typprüfung, Vitest mit Abdeckung, Build |
 | `php.yml` | PHP-Syntax und PHPUnit (PHP 8.2–8.4), Psalm gegen NC 33/34/35, Codestil, info.xml-Schema |
-| `integration.yml` | Installiert Nextcloud 33, 34 und 35 mit SQLite, aktiviert die App und ruft ihre Seite auf |
+| `integration.yml` | Installiert Nextcloud 33, 34 und 35 mit SQLite, aktiviert die App, ruft ihre Seite auf und prüft die Datei-API (`tests/integration/api-test.sh`) |
