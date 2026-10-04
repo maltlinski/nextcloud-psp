@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+	<id>psp</id>
+	<name>PSP – Projektstrukturplan</name>
+	<summary lang="de">Projektstrukturpläne gemeinsam erstellen, als Baum bearbeiten und für Anträge exportieren</summary>
+	<summary>Create work breakdown structures together, edit them as a tree and export them for applications</summary>
+	<description lang="de"><![CDATA[Mit **PSP** erstellt ihr Projektstrukturpläne direkt in Nextcloud.
+
+- Projekt, Teilprojekte und Arbeitspakete in beliebiger Tiefe
+- Automatische PSP-Codes (1, 1.2, 1.2.3)
+- Arbeitspaket-Steckbriefe mit Verantwortlichen, Aufwand, Kosten und Terminen
+- Summen für Aufwand und Kosten über alle Ebenen
+- Pläne liegen als `.psp`-Dateien in Files: teilen, Versionen und Rechte wie bei jeder anderen Datei
+
+Die App befindet sich im Aufbau.]]></description>
+	<description><![CDATA[**PSP** lets you create work breakdown structures (WBS) right inside Nextcloud.
+
+- Project, sub-projects and work packages at any depth
+- Automatic WBS codes (1, 1.2, 1.2.3)
+- Work package sheets with owner, effort, costs and dates
+- Effort and cost roll-ups across all levels
+- Plans are stored as `.psp` files in Files: share, version and control access like any other file
+
+This app is under construction.]]></description>
+	<version>0.1.0</version>
+	<licence>AGPL-3.0-or-later</licence>
+	<author homepage="https://github.com/maltlinski">Malte Leonard Herz</author>
+	<namespace>Psp</namespace>
+	<category>organization</category>
+	<website>https://github.com/maltlinski/nextcloud-psp</website>
+	<bugs>https://github.com/maltlinski/nextcloud-psp/issues</bugs>
+	<repository type="git">https://github.com/maltlinski/nextcloud-psp.git</repository>
+	<dependencies>
+		<php min-version="8.2"/>
+		<nextcloud min-version="33" max-version="35"/>
+	</dependencies>
+	<navigations>
+		<navigation>
+			<id>psp</id>
+			<name>PSP</name>
+			<route>psp.page.index</route>
+			<icon>app.svg</icon>
+			<type>link</type>
+		</navigation>
+	</navigations>
+</info>

@@ -1,0 +1,80 @@
+# SPDX-FileCopyrightText: 2026 Malte Leonard Herz
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Installs a real Nextcloud server for every supported version, enables the
+# app and checks that its page is served.
+name: Nextcloud integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: integration-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - server: stable33
+            php: '8.2'
+          - server: stable34
+            php: '8.3'
+          - server: stable35
+            php: '8.4'
+    name: Enable on ${{ matrix.server }} (PHP ${{ matrix.php }})
+    steps:
+      - name: Checkout server
+        uses: actions/checkout@v4
+        with:
+          repository: nextcloud/server
+          ref: ${{ matrix.server }}
+          submodules: true
+          persist-credentials: false
+
+      - name: Checkout app
+        uses: actions/checkout@v4
+        with:
+          path: apps/psp
+          persist-credentials: false
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: bz2, ctype, curl, dom, fileinfo, gd, iconv, intl, json, libxml, mbstring, openssl, pcntl, posix, session, simplexml, xmlreader, xmlwriter, zip, zlib, sqlite, pdo_sqlite
+          coverage: none
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: apps/psp/.nvmrc
+
+      - name: Build app frontend
+        working-directory: apps/psp
+        run: |
+          npm i -g npm@11
+          npm ci
+          npm run build
+
+      - name: Install Nextcloud and enable app
+        run: |
+          php occ maintenance:install --database=sqlite --admin-user=admin --admin-pass=admin
+          php occ app:enable --force psp
+          php occ app:list --enabled | grep -E '^\s+- psp:'
+
+      - name: Request the app page
+        run: |
+          php -S 127.0.0.1:8080 > /tmp/php.log 2>&1 &
+          sleep 3
+          code=$(curl -s -o page.html -w '%{http_code}' -u admin:admin http://127.0.0.1:8080/index.php/apps/psp/)
+          echo "HTTP $code"
+          test "$code" = "200"
+          grep -q 'id="psp"' page.html
+          grep -q 'psp-main.mjs' page.html
