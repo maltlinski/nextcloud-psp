@@ -23,10 +23,13 @@ Die App befindet sich im Aufbau.]]></description>
 - Plans are stored as `.psp` files in Files: share, version and control access like any other file
 
 This app is under construction.]]></description>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<licence>AGPL-3.0-or-later</licence>
 	<author homepage="https://github.com/maltlinski">Malte Leonard Herz</author>
 	<namespace>Psp</namespace>
+	<types>
+		<filesystem/>
+	</types>
 	<category>organization</category>
 	<website>https://github.com/maltlinski/nextcloud-psp</website>
 	<bugs>https://github.com/maltlinski/nextcloud-psp/issues</bugs>

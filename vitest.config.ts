@@ -7,8 +7,8 @@ export default defineConfig({
 		include: ['src/**/*.test.ts'],
 		coverage: {
 			provider: 'v8',
-			include: ['src/core/**/*.ts'],
-			exclude: ['src/core/__tests__/**', 'src/core/index.ts'],
+			include: ['src/core/**/*.ts', 'src/services/session.ts'],
+			exclude: ['src/**/__tests__/**', 'src/core/index.ts'],
 			reporter: ['text', 'html'],
 			thresholds: {
 				lines: 90,

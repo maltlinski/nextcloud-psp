@@ -10,3 +10,7 @@ declare(strict_types=1);
 // Unit tests run without a Nextcloud server: the OCP interfaces come from
 // the nextcloud/ocp package and server classes are mocked.
 require_once __DIR__ . '/../vendor/autoload.php';
+
+if (!interface_exists(\OC\Hooks\Emitter::class)) {
+	require_once __DIR__ . '/stubs/oc-hooks.php';
+}

@@ -23,18 +23,21 @@ Der ausführliche Plan mit Recherche und Begründungen liegt im Planungsdokument
 
 **Abnahme:** Beispiel-PSP lässt sich laden, ändern und verlustfrei speichern. Erfüllt: [docs/beispiel.psp](docs/beispiel.psp) wird geladen, bearbeitet und byte-genau wieder geschrieben (Test in `src/core/__tests__/serialize.test.ts`).
 
-## Phase 2 – Files-Integration
+## Phase 2 – Files-Integration ✅
 
-- [ ] Dateityp `.psp` registrieren (MIME-Typ, Symbol)
-- [ ] Eintrag „Neu → Projektstrukturplan“ im Files-Menü
-- [ ] Datei-Aktion „In PSP öffnen“
-- [ ] Laden/Speichern per WebDAV mit ETag, Autosave, Konfliktdialog
+- [x] Dateityp `.psp` registrieren: MIME-Typ `application/x-psp+json` für neue Dateien (eigenes Dateisymbol folgt später)
+- [x] Eintrag „Neu → Neuer Projektstrukturplan“ im Files-Menü, mit Namensdialog
+- [x] Datei-Aktion „Im PSP-Editor öffnen“, Standardaktion beim Klick auf eine `.psp`-Datei
+- [x] Laden/Speichern über eine eigene API (`/ocs/v2.php/apps/psp/api/v1/files/{id}`) mit ETag-Prüfung, Autosave, Konfliktdialog
+- [x] Startseite der App: neuen Plan anlegen oder vorhandenen öffnen
+- [x] Freigaben: Bearbeiten mit Schreibrecht, sonst „Nur lesen“
 
 **Abnahme:** Zwei Personen öffnen dieselbe geteilte Datei; wer veraltet speichert, bekommt einen Konfliktdialog statt stillem Überschreiben.
+Erfüllt und automatisch geprüft auf Nextcloud 34.0.4 und 35.0.1 (`tests/e2e/editor-flow.mjs`, `tests/integration/api-test.sh`).
 
 ## Phase 3 – Editor
 
-- [ ] Gliederungsansicht mit Tastatursteuerung
+- [x] Gliederungsansicht mit Tastatursteuerung (Grundversion: Enter, Tab, Umschalt+Tab, Alt+Pfeile, Pfeile, Rückgängig; Typ wechseln, löschen, einklappen)
 - [ ] Baumdiagramm (SVG, einklappbar, Zoom, Drag & Drop)
 - [ ] Seitenleiste mit Steckbrief, Personenauswahl aus Nextcloud-Nutzern
 - [ ] Tabellenansicht der Arbeitspakete

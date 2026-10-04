@@ -69,12 +69,19 @@ jobs:
           php occ app:enable --force psp
           php occ app:list --enabled | grep -E '^\s+- psp:'
 
-      - name: Request the app page
+      - name: Request the app page and test the file API
         run: |
-          php -S 127.0.0.1:8080 > /tmp/php.log 2>&1 &
+          PHP_CLI_SERVER_WORKERS=4 php -S 127.0.0.1:8080 > /tmp/php.log 2>&1 &
           sleep 3
           code=$(curl -s -o page.html -w '%{http_code}' -u admin:admin http://127.0.0.1:8080/index.php/apps/psp/)
           echo "HTTP $code"
           test "$code" = "200"
           grep -q 'id="psp"' page.html
           grep -q 'psp-main.mjs' page.html
+          bash apps/psp/tests/integration/api-test.sh http://127.0.0.1:8080 occ
+
+      - name: Server log on failure
+        if: failure()
+        run: |
+          cat /tmp/php.log || true
+          tail -n 50 data/nextcloud.log || true

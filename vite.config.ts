@@ -4,6 +4,7 @@ import { join, resolve } from 'path'
 export default createAppConfig(
 	{
 		main: resolve(join('src', 'main.ts')),
+		files: resolve(join('src', 'files.ts')),
 	},
 	{
 		createEmptyCSSEntryPoints: true,
