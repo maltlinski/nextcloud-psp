@@ -2,7 +2,7 @@
 
 Projektstrukturpläne (PSP, engl. *work breakdown structure*) gemeinsam in Nextcloud erstellen, als Baum bearbeiten und für Anträge exportieren.
 
-> **Status:** im Aufbau. Phase 0 (Grundgerüst) ist umgesetzt. Den Fahrplan zeigt [ROADMAP.md](ROADMAP.md).
+> **Status:** im Aufbau. Phase 0 (Grundgerüst) und Phase 1 (Datenkern) sind umgesetzt. Den Fahrplan zeigt [ROADMAP.md](ROADMAP.md).
 
 ## Idee
 
@@ -46,6 +46,8 @@ npm run lint
 composer install       # PHP-Werkzeuge
 composer run test:unit # PHPUnit
 ```
+
+Das Dateiformat `.psp` ist in [docs/DATEIFORMAT.md](docs/DATEIFORMAT.md) beschrieben.
 
 ## Lizenz
 

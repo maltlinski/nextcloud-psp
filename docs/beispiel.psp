@@ -1,0 +1,132 @@
+{
+  "format": "nextcloud-psp",
+  "schemaVersion": 1,
+  "meta": {
+    "title": "Beispiel: Theaterproduktion",
+    "currency": "EUR",
+    "codeScheme": "numeric",
+    "frozenCodes": false,
+    "costCategories": [
+      "Personal",
+      "Sachkosten",
+      "Reise",
+      "Sonstiges"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000001",
+      "parentId": null,
+      "order": 0,
+      "type": "project",
+      "title": "Beispiel: Theaterproduktion"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000002",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000001",
+      "order": 0,
+      "type": "subproject",
+      "title": "Konzept"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000003",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000002",
+      "order": 0,
+      "type": "workpackage",
+      "title": "Recherche",
+      "goal": "Wissensgrundlage für die Stückfassung",
+      "deliverable": "Recherchemappe",
+      "effortDays": 3,
+      "costs": [
+        {
+          "category": "Personal",
+          "amount": 300
+        }
+      ],
+      "start": "2027-01-04",
+      "end": "2027-01-15",
+      "status": "open"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000004",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000002",
+      "order": 1,
+      "type": "workpackage",
+      "title": "Stückfassung",
+      "deliverable": "Textfassung",
+      "effortDays": 5,
+      "start": "2027-01-18",
+      "end": "2027-02-05",
+      "status": "open",
+      "dependsOn": [
+        "6f1c2a10-0000-4000-8000-000000000003"
+      ]
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000005",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000001",
+      "order": 1,
+      "type": "subproject",
+      "title": "Bühne und Technik"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000006",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000005",
+      "order": 0,
+      "type": "workpackage",
+      "title": "Bühnenbild bauen",
+      "effortDays": 6,
+      "costs": [
+        {
+          "category": "Sachkosten",
+          "amount": 1200,
+          "note": "Material"
+        }
+      ],
+      "start": "2027-02-08",
+      "end": "2027-03-19",
+      "status": "open"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000007",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000005",
+      "order": 1,
+      "type": "workpackage",
+      "title": "Sounddesign",
+      "effortDays": 4,
+      "costs": [
+        {
+          "category": "Personal",
+          "amount": 600
+        }
+      ],
+      "start": "2027-03-01",
+      "end": "2027-04-16",
+      "status": "open"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000008",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000001",
+      "order": 2,
+      "type": "workpackage",
+      "title": "Öffentlichkeitsarbeit",
+      "effortDays": 2,
+      "costs": [
+        {
+          "category": "Sachkosten",
+          "amount": 250,
+          "note": "Druck"
+        }
+      ],
+      "status": "open"
+    },
+    {
+      "id": "6f1c2a10-0000-4000-8000-000000000009",
+      "parentId": "6f1c2a10-0000-4000-8000-000000000001",
+      "order": 3,
+      "type": "milestone",
+      "title": "Premiere",
+      "date": "2027-05-07"
+    }
+  ]
+}
